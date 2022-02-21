@@ -5,8 +5,8 @@
   "keywords": [],
   "main": "src/index.js",
   "dependencies": {
-    "carbon-react": "npm:carbon-react@103.2.0",
-    "carbon-react-copy": "npm:carbon-react@103.2.0",
+    "carbon-react": "npm:carbon-react@104.22.0",
+    "carbon-react-copy": "npm:carbon-react@104.22.0",
     "core-js": "3.2.1",
     "i18n-js": "3.3.0",
     "react": "16.8.6",

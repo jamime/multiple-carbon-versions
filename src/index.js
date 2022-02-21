@@ -1,32 +1,42 @@
-import React from "react";
+import React, { useState } from "react";
 import ReactDOM from "react-dom";
-
-import CarbonProvider from "carbon-react/lib/components/carbon-provider";
+import External from "./External";
+import Component from "./Internal";
 import Button from "carbon-react/lib/components/button";
-import SplitButton from "carbon-react/lib/components/split-button";
-
-import CarbonProvider2 from "carbon-react-copy/lib/components/carbon-provider";
-import Button2 from "carbon-react-copy/lib/components/button";
-import SplitButton2 from "carbon-react-copy/lib/components/split-button";
+import DialogFullScreen from "carbon-react/lib/components/dialog-full-screen";
+import CarbonProvider from "carbon-react/lib/components/carbon-provider";
+import GlobalStyle from "carbon-react/lib/style/global-style";
 
 const App = () => {
+  const [openExternal, setOpenExternal] = useState(false);
+  const [openInternal, setOpenInternal] = useState(false);
   return (
     <>
+      <GlobalStyle />
       <CarbonProvider>
-        <SplitButton text="Split button">
-          <Button>Button 1</Button>
-          <Button>Button 2</Button>
-          <Button>Button 3</Button>
-        </SplitButton>
+        <Button onClick={() => setOpenExternal(true)}>External</Button>
+        <Button onClick={() => setOpenInternal(true)}>Internal</Button>
+        <DialogFullScreen
+          open={openExternal}
+          title="DialogFullScreen"
+          subtitle="External"
+          onCancel={() => {
+            setOpenExternal(false);
+          }}
+        >
+          <External />
+        </DialogFullScreen>
+        <DialogFullScreen
+          open={openInternal}
+          title="DialogFullScreen"
+          subtitle="Internal"
+          onCancel={() => {
+            setOpenInternal(false);
+          }}
+        >
+          <Component />
+        </DialogFullScreen>
       </CarbonProvider>
-
-      <CarbonProvider2>
-        <SplitButton2 text="Split button">
-          <Button2>Button 1</Button2>
-          <Button2>Button 2</Button2>
-          <Button2>Button 3</Button2>
-        </SplitButton2>
-      </CarbonProvider2>
     </>
   );
 };
